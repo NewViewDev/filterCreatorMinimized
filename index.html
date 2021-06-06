@@ -14,15 +14,15 @@
   <div id="grid">
     <!-- Fills up with boxes via javascript -->
   </div><br>
-  <label for="aditionalBoxes">Aditional Math:</label>
-  <div id="aditionalBoxes">
-    <button class="signs" id="openParen">(</button>
-    <button class="signs" id="closedParen">)</button>
-    <input type="number" value=0 id="customNum"></input>
-    <button id="addNum">Add Number</button>
-  </div>
+  <form id="sizeInput" onsubmit="return false;" style="text-align: center;" >
+    <label for="xSize">Square Dimensions:</label>
+    <input id="xSize" type="number" min="1" value=1 step="2"> x</input>
+    <input id="ySize" type="number" min="1" value=1 step="2"></input><br>
+    <button type="submit">Change Dimensions</button>
+  </form>
   <br>
-  <label for="equationBox">Equation for Selection:</label>
+  <!-- <label for="equationBox">Equation for Selection:</label> -->
+  <h3>Equations:</h3>
   <div id="equationBox">
       Red Equation:
       <button class="gridSquares" id="redSquare" style="background-color:red;">0,0</button>
@@ -37,12 +37,13 @@
       = <div id="blueEq" style="display: inline-block;"></div>
     <br>
   </div><br>
-  <form id="sizeInput" onsubmit="return false;">
-    <label for="xSize">Square Dimensions:</label>
-    <input id="xSize" type="number" min="1" value=1 step="2"> x</input>
-    <input id="ySize" type="number" min="1" value=1 step="2"></input><br>
-    <button type="submit">Change Dimensions</button>
-  </form>
+  <label for="aditionalBoxes">Aditional Math:</label>
+  <div id="aditionalBoxes">
+    <button class="signs" id="openParen">(</button>
+    <button class="signs" id="closedParen">)</button>
+    <input type="number" value=0 id="customNum"></input>
+    <button id="addNum">Add Number</button>
+  </div>
   <br></br>
   <input id="picture" type="file" accept="image/png, image/jpeg"></input>
   <br></br>
@@ -54,10 +55,19 @@
   <!-- <div id="result">
     <canvas id="glCanvas" width="640" height="480"></canvas>
   </div> -->
-  <h2>Instructions:</h3>
+  <h2>Information:</h2>
     <p>
-      1.) Please define a grid size (Row * Column) before adding equations.<br>
-      2.) Enter equations.<br>
+      This program loops though all the pixels in the supplied image and alters the Red, Green, and Blue
+      channels according to the equations provided by the user.<br>
+      Equations are given in the form of relative pixel values. 0,0 is the current pixel and for example, 0,-1 would be the pixel above it.<br>
+    </p>
+  <h2>Instructions:</h2>
+    <p>
+      1.) Please define the square dimensions (Row * Column) for the relative pixels.<br>
+      2.) Enter equations:<br>
+      Click on the red, green or blue squares to change the selected equation that you are editing.<br>
+      Then click on the white squares from the top of the page to add them to the selected equation.<br>
+      Now the squares in the eqaution can be clicked to cycle their color, and the signs can be clicked to cycle between +, -, /, and * as well.
       3.) Select an image to edit.<br>
       4.) Click Filter
     </p>
