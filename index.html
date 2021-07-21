@@ -16,7 +16,7 @@
   <meta http-equiv="Expires" content="0" />
 
   <meta charset="utf-8">
-  <link rel="stylesheet" href="gridPage.css"/>
+  <link rel="stylesheet" href="main.css"/>
   <script src="./mathjs/lib/browser/math.js" type="text/javascript"></script>
   <!-- <script src=".\mathjs\lib\browser\math.js" type="module"></script> -->
   <script src="WebGL.js" type="text/javascript"></script>
@@ -44,7 +44,7 @@
     </div>
   </header>
 
-  <h1>Filter Creator V2.0</h1>
+  <h1>Filter Creator V2.2</h1>
   <div id="grid">
     <!-- Fills up with boxes via javascript -->
   </div><br>
@@ -59,17 +59,21 @@
   <h3>Equations:</h3>
   <div id="equationBox">
       Red Equation:
-      <button class="gridSquares" id="redSquare" style="background-color:red;">0,0</button>
+      <button class="color" id="redSquare" style="background-color:red;">0,0</button>
       = <div id="redEq" style="display: inline-block;"></div>
     <br>
       Green Equation:
-      <button class="gridSquares" id="greenSquare" style="background-color:green;">0,0</button>
+      <button class="color" id="greenSquare" style="background-color:green;">0,0</button>
       = <div id="greenEq" style="display: inline-block;"></div>
     <br>
       Blue Equation:
-      <button class="gridSquares" id ="blueSquare" style="background-color:blue;">0,0</button>
+      <button class="color" id ="blueSquare" style="background-color:blue;">0,0</button>
       = <div id="blueEq" style="display: inline-block;"></div>
     <br>
+			Alpha Equation:
+			<button class="color" id ="alphaSquare" style="background-color:gray;">0,0</button>
+			= <div id="alphaEq" style="display: inline-block;"></div>
+		<br>
   </div><br>
   <label for="aditionalBoxes">Aditional Math:</label>
   <div id="aditionalBoxes">
@@ -81,7 +85,7 @@
   <br></br>
   <p>
     <b>Please enter an Image URL or choose a file from your computer:</b><br>
-    <strong>Note:<strong> All processing is done on the user's computer.
+    <strong>Note:</strong> All processing is done on the user's computer.
     We have no interest in user images and do not view them, nor can we.
   </p>
   <label for="pictureUrl">URL:</label>
@@ -89,15 +93,21 @@
   <br>
   <label for="pictureFile">File:</label>
   <input id="pictureFile" type="file" accept="image/png, image/jpeg"></input>
-  <br>
-  <label for="coreCount">#Of threads to use (if WebGL not supported):</label>
-  <input id="coreCount" type="number" min="1"></input>
+  <br><br>
+  <input type="radio" id="selectGL" name="progLang" value="WebGL">WebGL</input><br>
+  <input type="radio" id="selectJS" name="progLang" value="javascript">JavaScript (slower)</input><br>
+  <div id="javaOptions" style="display: none">
+    <label for="coreCount">#Of threads to use (if WebGL not supported):</label>
+    <input id="coreCount" type="number" min="1"></input>
+  </div>
+
   <br></br>
   <button id="filter">Filter!</button>
   <p>Before:</p><br>
   <canvas id="canvasBefore"></canvas>
   <br><p>After (Preview):</p><br>
-  <canvas id="canvasAfter"></canvas>
+	<div id="canvasHolder">
+	</div>
   <!-- <a download id="download" style="display: none">Download Image</a> -->
   <button id="download" style="display: none">Download Image</button>
   <h2>Information:</h2>
@@ -116,7 +126,7 @@
       3.) Select an image to edit.<br>
       4.) Click Filter
     </p>
-  <script src="gridPage.js"></script>
+  <script src="main.js"></script>
 
   <!-- <script src="WebGL.js"></script> -->
 </body>
